@@ -40,10 +40,11 @@ const summary = () => {
     dependencies: Object.keys(seenDeps).sort(),
   }
 }
-const checkQueue = ()=>{
+
+const checkQueue = ()=> {
   if(outstanding < concurrency && repoQueue.length > 0){
     let popped = repoQueue.pop();
-    console.log(`${repoQueue.length}/${maxQueueLength} : ${Object.keys(seenContribs).length}`)
+    // console.log(`${repoQueue.length}/${maxQueueLength} : ${Object.keys(seenContribs).length}`)
     // console.log(`p: ${popped.url}`);
     getContributors(popped);
   }
@@ -69,7 +70,8 @@ const getContributors = (repository, n=0) => {
     return
   };
   outstanding++;
-  const url = `http://api.github.com/repos/${owner}/${repo}/contributors?access_token=${OAUTH}`
+  // const url = `http://api.github.com/repos/${owner}/${repo}/contributors?access_token=${OAUTH}`
+  const url = `http://localhost:8080/repos/${owner}/${repo}/contributors?access_token=${OAUTH}`
   fetchUrl(url, function(error, meta, body){
     if(error){
       console.log(`retry repo: ${n} ${owner} ${repo} ${error}`)
@@ -113,7 +115,7 @@ const getContributors = (repository, n=0) => {
 const getPackageInfo = (package, n=0) => {
   if(seenDeps[package]) return;
 
-  fetchUrl(`https://registry.npmjs.org/${package}/latest/`, function(error, meta, body){
+  fetchUrl(`http://localhost:7070/${package}/latest/`, function(error, meta, body){
       if (error) {
         console.log(`retry package: ${n} ${package}`)
         getPackageInfo(package,++n)
