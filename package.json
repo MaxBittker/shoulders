@@ -17,7 +17,27 @@
   },
   "homepage": "https://github.com/MaxBittker/shoulders#readme",
   "dependencies": {
+    "babel": "^6.23.0",
+    "babel-core": "^6.24.1",
+    "babel-loader": "^7.0.0",
+    "brace": "^0.10.0",
+    "browser-request": "^0.3.3",
     "fetch": "^1.1.0",
-    "raven": "^1.1.4"
+    "koa": "^2.2.0",
+    "koa-bodyparser": "^4.2.0",
+    "koa-router": "^7.1.1",
+    "koa-send": "^4.1.0",
+    "koa-static": "^3.0.0",
+    "raven": "^1.1.4",
+    "react": "^15.5.4",
+    "react-ace": "^4.2.1",
+    "react-dom": "^15.5.4",
+    "request": "^2.81.0",
+    "request-promise": "^4.2.0",
+    "webpack": "^2.5.1"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.24.1",
+    "babel-preset-react": "^6.24.1"
   }
 }
